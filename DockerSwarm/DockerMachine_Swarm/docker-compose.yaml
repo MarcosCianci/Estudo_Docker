@@ -1,0 +1,22 @@
+version: "3"
+
+
+services:
+  dexter-intranet:
+    image: "192.168.56.104:5000/dexter-intranet"
+    hostname: "dexter-intranet"
+    domainname: "dexter.com.br"
+    networks:
+      - "dexter-cluster"
+    environment:
+      - "constraint:provider==virtualbox"
+    ports:
+      - "0.0.0.0:8080:8080"
+
+
+network:
+  dexter-cluster:
+    external: true
+
+#volumes:
+
