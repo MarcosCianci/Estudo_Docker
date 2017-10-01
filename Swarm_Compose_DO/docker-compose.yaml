@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  dexter-zabbix-server:
+    image: "instrutordocker/dexter-zabbix-server"
+    hostname: "dexter-zabbix-server"
+    domainname: "dexter.com.br"
+    container_name: "dexter-zabbix-server"
+    ports:
+      - "80:80"
+      - "10050:10050"
+      - "10051:10051"
+    networks:
+      - dexter-desafio
+    environment:
+      - "constranit:provider==digitalocean"
+
+  dexter-zabbix-banco:
+    image: "instrutordocker/dexter-zabbix-banco"
+    hostname: "dexter-zabbix-banco"
+    domainname: "dexter.com.br"
+    container_name: "dexter-zabbix-banco"
+    ports: 
+      - "5432:5432"
+    networks: 
+      - dexter-desafio
+    environment:
+     - "constranit:provider==digitalocean"
+
+networks:
+  dexter-desafio:
+    external: true
+
+
+
+
